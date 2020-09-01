@@ -1,0 +1,216 @@
+:root {
+  --oxanium: "Oxanium", cursive;
+  --montserrat: "Montserrat", sans-serif;
+  --dark: #112130;
+  --primary: #9cb3c9;
+  --light: #faf3dd;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--dark);
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.wrapper {
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  display: grid;
+  grid-template-areas:
+    "title title title"
+    "description description description"
+    "icons icons icons";
+  height: 70vh;
+  width: 60vw;
+  position: relative;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* title */
+
+.title-wrapper {
+  grid-area: title;
+}
+
+.title-text {
+  color: var(--light);
+  font-family: var(--montserrat);
+  font-size: 8rem;
+  font-weight: 900;
+  letter-spacing: 0.2rem;
+}
+
+/* description */
+
+.description-wrapper {
+  grid-area: description;
+  display: flex;
+  align-items: center;
+}
+
+.description-avatar {
+  border-radius: 50%;
+  margin-right: 2rem;
+  height: 18rem;
+  box-shadow: 0rem 0rem 0.8rem black;
+}
+
+.description-text {
+  font-family: var(--oxanium);
+  font-size: 3rem;
+  color: var(--primary);
+  font-weight: 400;
+}
+
+.description-link {
+  color: var(--light);
+  text-decoration: none;
+}
+
+.description-greeting {
+  font-size: 4rem;
+  color: var(--light);
+  font-weight: 700;
+}
+
+.description-link:hover {
+  text-decoration: underline;
+}
+
+.description-link,
+.description-link:visited {
+  color: var(--light);
+  text-decoration: none;
+}
+
+.description-link:hover {
+  text-decoration: underline;
+}
+
+/* icons */
+
+.icons-wrapper {
+  grid-area: icons;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.icon-link,
+.icon-link:visited {
+  text-decoration: none;
+}
+
+.icon {
+  font-size: 4.5rem;
+  color: var(--light);
+  transition: 0.4s;
+  backface-visibility: hidden;
+}
+
+.icon-link:hover .icon {
+  transform: scale(1.1) translateY(-0.2rem);
+  color: #4799eb;
+}
+
+@media (max-width: 1800px) {
+  .wrapper {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 1200px) {
+  .wrapper {
+    width: 80vw;
+  }
+
+  .description-avatar {
+    height: 22rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .description-text {
+    font-size: 2rem;
+  }
+
+  .description-greeting {
+    font-size: 3rem;
+  }
+
+  .description-avatar {
+    height: 15rem;
+  }
+
+  .title-text {
+    font-size: 5rem;
+  }
+
+  .icon {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .description-text {
+    font-size: 1.5rem;
+  }
+
+  .description-greeting {
+    font-size: 2rem;
+  }
+
+  .description-avatar {
+    height: 12rem;
+  }
+
+  .title-text {
+    font-size: 4rem;
+  }
+
+  .icon {
+    font-size: 3rem;
+  }
+
+  .wrapper {
+    width: 95vw;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .description-text {
+    font-size: 1.3rem;
+  }
+
+  .description-greeting {
+    font-size: 2rem;
+  }
+
+  .description-avatar {
+    height: 10rem;
+  }
+
+  .title-text {
+    font-size: 3rem;
+  }
+
+  .icon {
+    font-size: 2.5rem;
+  }
+}
