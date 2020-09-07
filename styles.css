@@ -28,6 +28,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
   display: grid;
+  row-gap: 1rem;
   grid-template-areas:
     "title title title"
     "description description description"
