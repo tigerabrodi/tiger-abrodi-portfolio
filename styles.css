@@ -1,7 +1,8 @@
 :root {
   --oxanium: "Oxanium", cursive;
   --montserrat: "Montserrat", sans-serif;
-  --dark: #112130;
+  --dark: #081d2c;
+  --dark-light: #095894;
   --primary: #9cb3c9;
   --light: #faf3dd;
 }
@@ -19,9 +20,16 @@ html {
 }
 
 body {
-  background-color: var(--dark);
+  background-image: linear-gradient(
+    to right,
+    var(--dark),
+    var(--dark-light)
+  );
+  background-position: left;
+  background-size: 1000%;
   box-sizing: border-box;
   height: 100vh;
+  animation: 30s alternate infinite linearGradientAnimation;
 }
 
 .wrapper {
@@ -213,5 +221,15 @@ body {
 
   .icon {
     font-size: 2.5rem;
+  }
+}
+
+@keyframes linearGradientAnimation {
+  0% {
+    background-position: left;
+  }
+
+  100% {
+    background-position: right;
   }
 }
