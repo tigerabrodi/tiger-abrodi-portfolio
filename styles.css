@@ -20,29 +20,26 @@ html {
 }
 
 body {
-  background-image: linear-gradient(
-    to right,
-    var(--dark),
-    var(--dark-light)
-  );
+  background-image: linear-gradient(to right, var(--dark), var(--dark-light));
   background-position: left;
   background-size: 1000%;
   box-sizing: border-box;
   height: 100vh;
-  animation: 30s alternate infinite linearGradientAnimation;
+  animation: linearGradientAnimation 30s alternate infinite;
 }
 
 .wrapper {
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
   display: grid;
-  row-gap: 1rem;
   grid-template-areas:
-    "title title title"
-    "description description description"
-    "icons icons icons";
+    "title title title home"
+    "avatar text text text"
+    "icons icons icons icons";
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+  row-gap: 2rem;
   height: 70vh;
-  width: 60vw;
+  width: 80vw;
   position: relative;
   top: 45%;
   left: 50%;
@@ -50,69 +47,72 @@ body {
 }
 
 /* title */
-
-.title-wrapper {
+.title {
+  color: var(--light);
+  font-family: var(--montserrat);
+  font-size: max(calc(7rem - calc(5vw - 0.5rem)), calc(6vw - 2rem));
+  font-weight: 900;
+  letter-spacing: 0.5rem;
   grid-area: title;
 }
 
-.title-text {
-  color: var(--light);
-  font-family: var(--montserrat);
-  font-size: 8rem;
-  font-weight: 900;
-  letter-spacing: 0.4rem;
+.home {
+  grid-area: home;
+  justify-self: start;
+  font-size: max(calc(7rem - calc(5vw - 0.5rem)), calc(7vw - 2rem));
 }
 
 /* description */
 
-.description-wrapper {
-  grid-area: description;
-  display: flex;
-  align-items: center;
-}
-
-.description-avatar {
+.avatar {
   border-radius: 50%;
   margin-right: 2rem;
-  height: 18rem;
-  box-shadow: 0rem 0rem 0.8rem black;
+  border: .3rem solid var(--primary);
+  box-shadow: 0rem 0rem 1rem black;
+  width: max(20rem, 15vw);
+  grid-area: avatar;
 }
 
-.description-text {
+.text {
   font-family: var(--oxanium);
-  font-size: 3rem;
+  font-size: max(1.8rem, calc(3.5rem - 5vw), 2vw);
   color: var(--primary);
   font-weight: 400;
+  line-height: 1.4;
+  grid-area: text;
 }
 
-.description-link {
+.link {
   color: var(--light);
   text-decoration: none;
 }
 
-.description-greeting {
-  font-size: 4rem;
+.greeting {
+  font-size: max(2rem, calc(3.5rem - 5vw), 2.5vw);
   color: var(--light);
   font-weight: 700;
 }
 
-.description-link:hover {
+.greeting__icon {
+  margin: 0 0.3rem;
+}
+
+.link:hover {
   text-decoration: underline;
 }
 
-.description-link,
-.description-link:visited {
+.link,
+.link:visited {
   color: var(--light);
   text-decoration: none;
 }
 
-.description-link:hover {
+.link:hover {
   text-decoration: underline;
 }
 
 /* icons */
-
-.icons-wrapper {
+.icons {
   grid-area: icons;
   display: flex;
   justify-content: space-around;
@@ -120,107 +120,45 @@ body {
   width: 100%;
 }
 
-.icon-link,
-.icon-link:visited {
+.icons__link,
+.icons__link:visited {
   text-decoration: none;
 }
 
-.icon {
-  font-size: 4.5rem;
+.icons__icon {
+  font-size: max(4rem, 3vw);
   color: var(--light);
   transition: 0.4s;
-  backface-visibility: hidden;
 }
 
-.icon-link:hover .icon {
+.icons__link:hover .icons__icon {
   transform: scale(1.1) translateY(-0.2rem);
   color: #4799eb;
 }
 
-@media (max-width: 1800px) {
-  .wrapper {
-    width: 70vw;
-  }
-}
-
-@media (max-width: 1200px) {
-  .wrapper {
-    width: 80vw;
-  }
-
-  .description-avatar {
-    height: 22rem;
-  }
-}
-
-@media (max-width: 950px) {
-  .description-text {
-    font-size: 2rem;
-  }
-
-  .description-greeting {
-    font-size: 3rem;
-  }
-
-  .description-avatar {
-    height: 15rem;
-  }
-
-  .title-text {
-    font-size: 4.7rem;
-  }
-
-  .icon {
-    font-size: 3.5rem;
-  }
-}
-
 @media (max-width: 600px) {
-  .description-text {
-    font-size: 1.5rem;
+  .title {
+    display: none;
   }
-
-  .description-greeting {
-    font-size: 2rem;
+  .home {
+    display: none;
   }
-
-  .description-avatar {
-    height: 12rem;
+  .avatar {
+    align-self: end;
   }
-
-  .title-text {
-    font-size: 3.7rem;
+  .icons {
+    justify-content: space-between;
   }
-
-  .icon {
-    font-size: 3rem;
-  }
-
   .wrapper {
-    width: 95vw;
-    justify-items: center;
+    grid-template-areas:
+      "avatar avatar avatar avatar"
+      "text text text text"
+      "icons icons icons icons";
+    width: 85vw;
+    row-gap: 6rem;
   }
-}
-
-@media (max-width: 400px) {
-  .description-text {
-    font-size: 1.3rem;
-  }
-
-  .description-greeting {
-    font-size: 2rem;
-  }
-
-  .description-avatar {
-    height: 10rem;
-  }
-
-  .title-text {
-    font-size: 2.7rem;
-  }
-
-  .icon {
-    font-size: 2.5rem;
+  .text {
+    text-align: center;
   }
 }
 
@@ -233,3 +171,4 @@ body {
     background-position: right;
   }
 }
+
