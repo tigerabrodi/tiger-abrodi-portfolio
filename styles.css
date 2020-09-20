@@ -67,7 +67,7 @@ body {
 .avatar {
   border-radius: 50%;
   margin-right: 2rem;
-  border: .3rem solid var(--primary);
+  border: 0.3rem solid var(--primary);
   box-shadow: 0rem 0rem 1rem black;
   width: max(20rem, 15vw);
   grid-area: avatar;
@@ -94,46 +94,96 @@ body {
 }
 
 .greeting__icon {
-  margin: 0 0.3rem;
+  margin: 0 0.5rem;
 }
 
-.link:hover {
-  text-decoration: underline;
+.link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.2rem;
+  background-color: var(--light);
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: 200ms transform ease;
 }
 
 .link,
 .link:visited {
   color: var(--light);
   text-decoration: none;
+  position: relative;
+  transition: 0.1s filter ease-in;
 }
 
-.link:hover {
-  text-decoration: underline;
+.link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* icons */
 .icons {
   grid-area: icons;
+  align-self: flex-end;
   display: flex;
   justify-content: space-around;
-  align-items: center;
   width: 100%;
 }
 
 .icons__link,
 .icons__link:visited {
   text-decoration: none;
+  position: relative;
+  height: max(6rem, 6vw);
+  width: max(6rem, 6vw);
+  border-radius: 50%;
+}
+
+.icons__link::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  transform: scale(0.5);
+  border-radius: 50%;
+  visibility: hidden;
+  z-index: -1;
+  box-shadow: 0rem 0rem 1rem black;
+}
+
+.icons__link:hover::after {
+  transform: scale(1);
+  visibility: visible;
+}
+
+.icons__link:hover .icons__icon {
+  transform: translate(-50%, -50%);
+  font-size: max(4.5rem, calc(3vw + 0.5rem));
+  filter: drop-shadow(0rem 0rem 0.1rem white);
 }
 
 .icons__icon {
   font-size: max(4rem, 3vw);
   color: var(--light);
-  transition: 0.4s;
+  position: absolute;
+  filter: drop-shadow(0rem 0rem 0.5rem black);
+  left: 50%;
+  top: 50%;
+  transition: all 0.2s;
+  transform: translate(-50%, -50%);
 }
 
-.icons__link:hover .icons__icon {
-  transform: scale(1.1) translateY(-0.2rem);
-  color: #4799eb;
+.icon-heart {
+  font-size: max(2rem, calc(4rem - 5vw), 2.5vw);
+  color: rgb(187, 43, 33);
+  animation: .7s infinite pulse;
 }
 
 @media (max-width: 600px) {
@@ -148,6 +198,7 @@ body {
   }
   .icons {
     justify-content: space-between;
+    align-self: auto;
   }
   .wrapper {
     grid-template-areas:
@@ -172,3 +223,13 @@ body {
   }
 }
 
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(0rem 0rem 0rem rgb(187, 43, 33));
+  }
+
+  100% {
+    filter: drop-shadow(0rem 0rem 10rem rgb(187, 43, 33));
+    transform: scale(1.05);
+  }
+}
