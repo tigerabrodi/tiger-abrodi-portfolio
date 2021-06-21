@@ -39,7 +39,7 @@ body {
   justify-items: center;
   row-gap: 2rem;
   height: 70vh;
-  width: 80vw;
+  width: 85vw;
   position: relative;
   top: 45%;
   left: 50%;
@@ -75,11 +75,15 @@ body {
 
 .text {
   font-family: var(--oxanium);
-  font-size: max(1.8rem, calc(3.5rem - 5vw), 2vw);
+  font-size: max(1.8rem, calc(3.5rem - 5vw), 1.7vw);
   color: var(--primary);
   font-weight: 400;
   line-height: 1.4;
   grid-area: text;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  line-height: 1.5;
 }
 
 .link {
@@ -88,7 +92,7 @@ body {
 }
 
 .greeting {
-  font-size: max(2rem, calc(3.5rem - 5vw), 2.5vw);
+  font-size: max(3rem, calc(3.5rem - 5vw), 2.5vw);
   color: var(--light);
   font-weight: 700;
 }
@@ -183,10 +187,26 @@ body {
 .icon-heart {
   font-size: max(2rem, calc(4rem - 5vw), 2.5vw);
   color: rgb(187, 43, 33);
-  animation: .7s infinite pulse;
+  animation: 0.7s infinite pulse;
 }
 
 @media (max-width: 600px) {
+  body {
+    height: 100%;
+  }
+  .wrapper {
+    grid-template-areas:
+      "avatar avatar avatar avatar"
+      "text text text text"
+      "icons icons icons icons";
+    width: 90vw;
+    row-gap: 4rem;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    padding: 2rem 0;
+  }
   .title {
     display: none;
   }
@@ -199,14 +219,6 @@ body {
   .icons {
     justify-content: space-between;
     align-self: auto;
-  }
-  .wrapper {
-    grid-template-areas:
-      "avatar avatar avatar avatar"
-      "text text text text"
-      "icons icons icons icons";
-    width: 85vw;
-    row-gap: 6rem;
   }
   .text {
     text-align: center;
